@@ -21,11 +21,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     public Employee removeEmployee(String firstName, String lastName) {
+        Employee employeeForRemove = new Employee(firstName, lastName);
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] == null) {
                 continue;
             }
-            if (employees[i].getFirstName().equals(firstName) && employees[i].getLastName().equals(lastName)) {
+            if (employees[i].equals(employeeForRemove)) {
                 employees[i] = null;
                 return employees[i];
             }
@@ -34,12 +35,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     public Employee findEmployee(String firstName, String lastName) {
-        for (Employee employee : employees) {
-            if (employee == null) {
+        Employee employeeForFind = new Employee(firstName, lastName);
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] == null) {
                 continue;
             }
-            if (firstName.equals(employee.getFirstName()) && lastName.equals(employee.getLastName())) {
-                return employee;
+            if (employees[i].equals(employeeForFind)) {
+                employees[i] = null;
+                return employeeForFind;
             }
         }
         throw new EmployeeIsNotFoundException();

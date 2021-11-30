@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import pro.sky.java.course2.exception.workwithexceptionproject.Employee;
 import pro.sky.java.course2.exception.workwithexceptionproject.service.EmployeeService;
 
 @RequestMapping("/employee")
@@ -20,22 +21,19 @@ public class EmployeeController {
         return "Welcome to the employee book!";
     }
 
-    @GetMapping(path = "/add")
-    public String add(@RequestParam String firstName, String lastName) {
-        employeeService.addEmployee(firstName,lastName);
-        return "Employee " + firstName + " " + lastName + " added successfully";
-    }
-    @GetMapping(path = "/remove")
-    public String remove(@RequestParam String firstName, String lastName) {
-        employeeService.removeEmployee(firstName,lastName);
-        return "Employee " + firstName + " " + lastName + " removed successfully";
-    }
-    @GetMapping(path = "/find")
-    public String find(@RequestParam String firstName, String lastName) {
-        employeeService.findEmployee(firstName,lastName);
-        return "firstName: " + firstName + " lastName: " + lastName;
+    @GetMapping("/add")
+    public Employee add(@RequestParam String firstName,@RequestParam String lastName) {
+        return employeeService.addEmployee(firstName, lastName);
     }
 
+    @GetMapping("/remove")
+    public Employee remove(@RequestParam String firstName,@RequestParam String lastName) {
+        return employeeService.removeEmployee(firstName, lastName);
+    }
 
+    @GetMapping("/find")
+    public Employee find(@RequestParam String firstName,@RequestParam String lastName) {
+        return employeeService.findEmployee(firstName, lastName);
+    }
 }
 

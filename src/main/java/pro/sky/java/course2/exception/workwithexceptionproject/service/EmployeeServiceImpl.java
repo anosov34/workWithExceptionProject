@@ -9,7 +9,6 @@ import pro.sky.java.course2.exception.workwithexceptionproject.exception.Employe
 public class EmployeeServiceImpl implements EmployeeService {
     private final Employee[] employees = new Employee[1];
 
-
     public Employee addEmployee(String firstName, String lastName) {
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] == null) {

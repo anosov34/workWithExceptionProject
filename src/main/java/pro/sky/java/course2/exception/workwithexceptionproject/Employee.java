@@ -3,7 +3,6 @@ package pro.sky.java.course2.exception.workwithexceptionproject;
 import java.util.Objects;
 
 public class Employee {
-
     private final String firstName;
     private final String lastName;
 

@@ -6,78 +6,112 @@ import pro.sky.java.course2.exception.workwithexceptionproject.exception.ArraysI
 import pro.sky.java.course2.exception.workwithexceptionproject.exception.EmployeeIsNotFoundException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
-    private List<Employee> employees;
+    private final List<Employee> employees;
 
     public EmployeeServiceImpl() {
         this.employees = new ArrayList<>();
-        employees.add(new Employee("Sergey", "Sergeev"));
-        employees.add(new Employee("Ivan", "Ivanov"));
-        employees.add(new Employee("Andrey", "Andreyev"));
-    }
-    @Override
-    public boolean addEmployeeVideo(String firstName, String lastName) {
-        return employees.add(new Employee(firstName, lastName));
     }
 
     @Override
-    public boolean removeEmployeeVideo(String firstName, String lastName) {
-        return employees.remove(new Employee(firstName, lastName));
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public Employee addEmployee(String firstName, String lastName) {
         Employee employee = new Employee(firstName, lastName);
-        int index = employees.indexOf(employee);
-        if (index == -1) {
-            throw new ArraysIsFullException();
-        }
-        return employees.add(index);
-        }
+        employees.add(new Employee(firstName, lastName));
+        return employee;
+    }
 
-
+    @Override
     public Employee removeEmployee(String firstName, String lastName) {
         Employee employee = new Employee(firstName, lastName);
-            int index = employees.indexOf(employee);
+        int index = employees.indexOf(employee);
         if (index == -1) {
             throw new EmployeeIsNotFoundException();
         }
         return employees.remove(index);
     }
-
-    public Employee findEmployee(String firstName, String lastName) {
-        Employee employee = new Employee(firstName,lastName);
-        for (Employee employee : employees) {
-            if (employee.equals(employee)) {
-                return employee;
-            }
-        }
-        throw new EmployeeIsNotFoundException();
+    @Override
+    public List<Employee> getEmployees() {
+        return employees;
     }
+
+
+
+    //    @Override
+//    public Employee findEmployee(String firstName, String lastName) {
+//        if (employees.contains(firstName + " " + lastName)) {
+//            return employees.get();
+//        } else {
+//            throw new EmployeeIsNotFoundException();
+//        }
+//    }
+
+
+
+
+
+//    public EmployeeServiceImpl() {
+//        this.employees = new HashMap<>();
+//    }
+//
+//    public Employee addEmployee(String firstName, String lastName) {
+//        Employee employee = new Employee(firstName, lastName);
+//        employees.put(firstName + " " + lastName, employee);
+//        return employee;
+//    }
+//
+//    public Employee removeEmployee(String firstName, String lastName) {
+//        if (employees.containsKey(firstName + " " + lastName)) {
+//            return employees.remove(firstName + " " + lastName);
+//        } else {
+//            throw new EmployeeIsNotFoundException();
+//        }
+//    }
+//
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    public Employee addEmployee(String firstName, String lastName) {
+//        Employee employee = new Employee(firstName, lastName);
+//        int index = employees.indexOf(employee);
+//        if (index == -1) {
+//            throw new ArraysIsFullException();
+//        }
+//        return employees.add(index);
+//        }
+
+
+
+//
+//    public Employee findEmployee(String firstName, String lastName) {
+//        Employee employee = new Employee(firstName,lastName);
+//        for (Employee employee : employees) {
+//            if (employee.equals(employee)) {
+//                return employee;
+//            }
+//        }
+//        throw new EmployeeIsNotFoundException();
+//    }
 
 
 

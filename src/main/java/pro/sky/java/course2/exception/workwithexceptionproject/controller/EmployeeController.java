@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 import pro.sky.java.course2.exception.workwithexceptionproject.Employee;
 import pro.sky.java.course2.exception.workwithexceptionproject.service.EmployeeService;
 
+import java.util.List;
+
 @RequestMapping("/employee")
 @RestController
 public class EmployeeController {
@@ -31,9 +33,14 @@ public class EmployeeController {
         return employeeService.removeEmployee(firstName, lastName);
     }
 
-    @GetMapping("/find")
-    public Employee find(@RequestParam String firstName, @RequestParam String lastName) {
-        return employeeService.findEmployee(firstName, lastName);
+    //
+//    @GetMapping("/find")
+//    public Employee find(@RequestParam String firstName, @RequestParam String lastName) {
+//        return employeeService.findEmployee(firstName, lastName);
+//    }
+    @GetMapping("/get")
+    public List<Employee> get() {
+        return employeeService.getEmployees();
     }
 }
 

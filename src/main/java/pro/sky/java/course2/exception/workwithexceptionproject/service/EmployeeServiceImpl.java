@@ -1,51 +1,61 @@
 package pro.sky.java.course2.exception.workwithexceptionproject.service;
 
 import org.springframework.stereotype.Service;
-import pro.sky.java.course2.exception.workwithexceptionproject.exception.ArraysIsFullException;
 import pro.sky.java.course2.exception.workwithexceptionproject.Employee;
+import pro.sky.java.course2.exception.workwithexceptionproject.exception.ArraysIsFullException;
 import pro.sky.java.course2.exception.workwithexceptionproject.exception.EmployeeIsNotFoundException;
+
+import java.util.List;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
-    private final Employee[] employees = new Employee[1];
+    private List<Employee> employees;
 
-    public Employee addEmployee(String firstName, String lastName) {
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i] == null) {
-                employees[i] = new Employee(firstName, lastName);
-                return employees[i];
-            }
-        }
-        throw new ArraysIsFullException();
+    public EmployeeServiceImpl(List<Employee> employees) {
+        this.employees = employees;
     }
 
-    public Employee removeEmployee(String firstName, String lastName) {
-        Employee employeeForRemove = new Employee(firstName, lastName);
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i] == null) {
-                continue;
-            }
-            if (employees[i].equals(employeeForRemove)) {
-                employees[i] = null;
-                return employees[i];
-            }
+    public Employee addEmployee(String firstName, String lastName) {
+        Employee employee = new Employee(firstName, lastName);
+        int index = employees.indexOf(employee);
+        if (index == -1) {
+            throw new ArraysIsFullException();
         }
-        throw new EmployeeIsNotFoundException();
+        return employees.add(index);
+        }
+
+
+    public Employee removeEmployee(String firstName, String lastName) {
+        Employee employee = new Employee(firstName, lastName);
+            int index = employees.indexOf(employee);
+        if (index == -1) {
+            throw new EmployeeIsNotFoundException();
+        }
+        return employees.remove(index);
     }
 
     public Employee findEmployee(String firstName, String lastName) {
-        Employee employeeForFind = new Employee(firstName, lastName);
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i] == null) {
-                continue;
-            }
-            if (employees[i].equals(employeeForFind)) {
-                employees[i] = null;
-                return employeeForFind;
+        Employee employee = new Employee(firstName,lastName);
+        for (Employee employee : employees) {
+            if (employee.equals(employee)) {
+                return employee;
             }
         }
         throw new EmployeeIsNotFoundException();
     }
+
+//        Employee employeeForFind = new Employee(firstName, lastName);
+//        for (int i = 0; i < employees.length; i++) {
+//            if (employees[i] == null) {
+//                continue;
+//            }
+//            if (employees[i].equals(employeeForFind)) {
+//                employees[i] = null;
+//                return employeeForFind;
+//            }
+//        }
+//        throw new ;
+
 }
 
 

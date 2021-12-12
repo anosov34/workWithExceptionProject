@@ -18,13 +18,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     public Employee addEmployee(String firstName, String lastName) {
         Employee employee = new Employee(firstName, lastName);
-        employees.put(firstName + " " + lastName, employee);
+        employees.put(firstName + lastName, employee);
         return employee;
     }
 
     public Employee removeEmployee(String firstName, String lastName) {
-        if (employees.containsKey(firstName + " " + lastName)) {
-            return employees.remove(firstName + " " + lastName);
+        if (employees.containsKey(firstName + lastName)) {
+            return employees.remove(firstName + lastName);
         } else {
             throw new EmployeeIsNotFoundException();
         }
@@ -32,11 +32,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
     public Employee findEmployee(String firstName, String lastName) {
-        if (employees.containsKey(firstName + " " + lastName)) {
-            return employees.get(firstName + " " + lastName);
+        if (employees.containsKey(firstName + lastName)) {
+            return employees.get(firstName + lastName);
         } else {
             throw new EmployeeIsNotFoundException();
         }
+    }
+
+    public Collection<Employee> getEmployees() {
+        return employees.values();
     }
 }
 

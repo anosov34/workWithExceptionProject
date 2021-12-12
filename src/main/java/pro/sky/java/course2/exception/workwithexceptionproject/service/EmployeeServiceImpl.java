@@ -1,12 +1,10 @@
 package pro.sky.java.course2.exception.workwithexceptionproject.service;
 
 import org.springframework.stereotype.Service;
-import pro.sky.java.course2.exception.workwithexceptionproject.Employee;
-import pro.sky.java.course2.exception.workwithexceptionproject.exception.ArraysIsFullException;
+import pro.sky.java.course2.exception.workwithexceptionproject.domain.Employee;
 import pro.sky.java.course2.exception.workwithexceptionproject.exception.EmployeeIsNotFoundException;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -26,13 +24,24 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee removeEmployee(String firstName, String lastName) {
-        Employee employee = new Employee(firstName, lastName);
-        int index = employees.indexOf(employee);
+        Employee employeeToRemove = new Employee(firstName, lastName);
+        int index = employees.indexOf(employeeToRemove);
         if (index == -1) {
             throw new EmployeeIsNotFoundException();
         }
         return employees.remove(index);
     }
+
+    @Override
+    public Employee findEmployee(String firstName, String lastName) {
+        Employee employeeToFind = new Employee(firstName, lastName);
+        int index = employees.indexOf(employeeToFind);
+        if (index == -1) {
+            throw new EmployeeIsNotFoundException();
+        }
+        return employees.get(index);
+    }
+
     @Override
     public List<Employee> getEmployees() {
         return employees;

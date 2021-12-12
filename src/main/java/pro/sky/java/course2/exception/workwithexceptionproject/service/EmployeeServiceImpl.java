@@ -1,8 +1,7 @@
 package pro.sky.java.course2.exception.workwithexceptionproject.service;
 
 import org.springframework.stereotype.Service;
-import pro.sky.java.course2.exception.workwithexceptionproject.exception.ArraysIsFullException;
-import pro.sky.java.course2.exception.workwithexceptionproject.Employee;
+import pro.sky.java.course2.exception.workwithexceptionproject.domain.Employee;
 import pro.sky.java.course2.exception.workwithexceptionproject.exception.EmployeeIsNotFoundException;
 
 import java.util.Collection;
@@ -43,6 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Collection<Employee> getEmployees() {
         return employees.values();
     }
+
 }
 
 

@@ -1,9 +1,8 @@
 package pro.sky.java.course2.exception.workwithexceptionproject.service;
 
-import pro.sky.java.course2.exception.workwithexceptionproject.Employee;
+import pro.sky.java.course2.exception.workwithexceptionproject.domain.Employee;
 
 import java.util.Collection;
-import java.util.Map;
 
 public interface EmployeeService {
 

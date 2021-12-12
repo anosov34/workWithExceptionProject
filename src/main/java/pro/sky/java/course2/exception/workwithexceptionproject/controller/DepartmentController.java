@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import pro.sky.java.course2.exception.workwithexceptionproject.Employee;
+import pro.sky.java.course2.exception.workwithexceptionproject.domain.Employee;
 import pro.sky.java.course2.exception.workwithexceptionproject.service.DepartmentServiceImpl;
 
 import java.util.Collection;
@@ -31,16 +31,9 @@ public class DepartmentController {
     public Employee showMinSalaryEmployeeByDep(@RequestParam int department) {
         return  departmentService.getMinSalaryEmployeeByDep(department);
     }
-    @GetMapping("/test")
-    public Collection<Employee> showDepartment(Integer department) {
-        return  departmentService.getDepartment(department);
+    @GetMapping("/all")
+    public Collection<Employee> showAllEmployeesByDepartmentId(Integer department) {
+        return  departmentService.getAllEmployeesByDepartmentId(department);
     }
-
-
-//    @GetMapping
-//    public String answerWelcome() {
-//        return "Welcome to the department book!";
-//    }
-
 
 }

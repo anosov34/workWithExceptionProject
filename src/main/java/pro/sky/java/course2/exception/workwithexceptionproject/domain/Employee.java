@@ -1,4 +1,4 @@
-package pro.sky.java.course2.exception.workwithexceptionproject;
+package pro.sky.java.course2.exception.workwithexceptionproject.domain;
 
 import java.util.Objects;
 

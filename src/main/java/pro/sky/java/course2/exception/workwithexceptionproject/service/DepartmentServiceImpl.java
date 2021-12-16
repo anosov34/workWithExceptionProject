@@ -42,10 +42,9 @@ public class DepartmentServiceImpl implements DepartmentService {
             employeeStream = employeeStream.filter(employee -> employee.getDepartment() == department);
         }
         return employeeStream.sorted(
-                Comparator.comparing(Employee::getDepartment)
-                        .thenComparing(Employee::getFirstName)
+                Comparator.comparingInt(Employee::getDepartment)
                         .thenComparing(Employee::getLastName)
-
+                        .thenComparing(Employee::getFirstName)
         ).collect(Collectors.toList());
     }
 }

@@ -5,6 +5,7 @@ import pro.sky.java.course2.exception.workwithexceptionproject.domain.Employee;
 import pro.sky.java.course2.exception.workwithexceptionproject.exception.EmployeeIsNotFoundException;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -18,7 +19,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee addEmployee(String firstName, String lastName) {
         Employee employee = new Employee(firstName, lastName);
-        employees.add(new Employee(firstName, lastName));
+        employees.add(employee);
         return employee;
     }
 
@@ -44,11 +45,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> getEmployees() {
-        return employees;
+        return Collections.unmodifiableList (employees);
     }
 
 }
-//Collections.unmodifiableList (employees)
+
 
 
 

@@ -2,14 +2,14 @@ package pro.sky.java.course2.exception.workwithexceptionproject.domain;
 
 import java.util.Objects;
 
-public class EmployeeAPI {
+public class Employee {
     private final String firstName;
     private final String lastName;
     private  int department;
     private  int salary;
 
 
-    public EmployeeAPI(String firstName, String lastName, int department, int salary) {
+    public Employee(String firstName, String lastName, int department, int salary) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.department = department;
@@ -44,8 +44,8 @@ public class EmployeeAPI {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        EmployeeAPI employeeAPI = (EmployeeAPI) o;
-        return department == employeeAPI.department && salary == employeeAPI.salary && firstName.equals(employeeAPI.firstName) && lastName.equals(employeeAPI.lastName);
+        Employee employee = (Employee) o;
+        return department == employee.department && salary == employee.salary && firstName.equals(employee.firstName) && lastName.equals(employee.lastName);
     }
 
     @Override

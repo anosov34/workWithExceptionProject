@@ -1,7 +1,7 @@
 package pro.sky.java.course2.exception.workwithexceptionproject.service;
 
 import org.springframework.stereotype.Service;
-import pro.sky.java.course2.exception.workwithexceptionproject.domain.EmployeeAPI;
+import pro.sky.java.course2.exception.workwithexceptionproject.domain.Employee;
 
 import java.util.Collection;
 import java.util.Comparator;
@@ -18,31 +18,31 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public EmployeeAPI getMaxSalaryEmployeeByDep(int department) {
+    public Employee getMaxSalaryEmployeeByDep(int department) {
         return employeeService.getEmployees().stream()
                 .filter(employee -> employee.getDepartment() == department)
-                .max(Comparator.comparingInt(EmployeeAPI::getSalary))
+                .max(Comparator.comparingInt(Employee::getSalary))
                 .orElseThrow();
     }
 
     @Override
-    public EmployeeAPI getMinSalaryEmployeeByDep(int department) {
+    public Employee getMinSalaryEmployeeByDep(int department) {
         return employeeService.getEmployees().stream()
                 .filter(employee -> employee.getDepartment() == department)
-                .min(Comparator.comparingInt(EmployeeAPI::getSalary))
+                .min(Comparator.comparingInt(Employee::getSalary))
                 .orElseThrow();
     }
 
     @Override
-    public Collection<EmployeeAPI> getAllEmployeesByDepartmentId(Integer department) {
-        Stream<EmployeeAPI> employeeStream = employeeService.getEmployees().stream();
+    public Collection<Employee> getAllEmployeesByDepartmentId(Integer department) {
+        Stream<Employee> employeeStream = employeeService.getEmployees().stream();
         if (department != null) {
             employeeStream = employeeStream.filter(employee -> employee.getDepartment() == department);
         }
         return employeeStream.sorted(
-                Comparator.comparingInt(EmployeeAPI::getDepartment)
-                        .thenComparing(EmployeeAPI::getLastName)
-                        .thenComparing(EmployeeAPI::getFirstName)
+                Comparator.comparingInt(Employee::getDepartment)
+                        .thenComparing(Employee::getLastName)
+                        .thenComparing(Employee::getFirstName)
         ).collect(Collectors.toList());
     }
 }

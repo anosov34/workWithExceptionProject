@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import pro.sky.java.course2.exception.workwithexceptionproject.domain.EmployeeAPI;
+import pro.sky.java.course2.exception.workwithexceptionproject.domain.Employee;
 import pro.sky.java.course2.exception.workwithexceptionproject.service.DepartmentServiceImpl;
 
 import java.util.Collection;
@@ -23,16 +23,16 @@ public class DepartmentController {
     }
 
     @GetMapping("/max-salary")
-    public EmployeeAPI showMaxSalaryEmployeeByDep(@RequestParam int department) {
+    public Employee showMaxSalaryEmployeeByDep(@RequestParam int department) {
         return departmentService.getMaxSalaryEmployeeByDep(department);
     }
 
     @GetMapping("/min-salary")
-    public EmployeeAPI showMinSalaryEmployeeByDep(@RequestParam int department) {
+    public Employee showMinSalaryEmployeeByDep(@RequestParam int department) {
         return  departmentService.getMinSalaryEmployeeByDep(department);
     }
     @GetMapping("/all")
-    public Collection<EmployeeAPI> showAllEmployeesByDepartmentId(Integer department) {
+    public Collection<Employee> showAllEmployeesByDepartmentId(Integer department) {
         return  departmentService.getAllEmployeesByDepartmentId(department);
     }
 

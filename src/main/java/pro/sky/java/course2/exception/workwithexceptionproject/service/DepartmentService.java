@@ -1,15 +1,15 @@
 package pro.sky.java.course2.exception.workwithexceptionproject.service;
 
-import pro.sky.java.course2.exception.workwithexceptionproject.domain.EmployeeAPI;
+import pro.sky.java.course2.exception.workwithexceptionproject.domain.Employee;
 
 import java.util.Collection;
 
 
 public interface DepartmentService {
-    EmployeeAPI getMaxSalaryEmployeeByDep(int department);
+    Employee getMaxSalaryEmployeeByDep(int department);
 
-    EmployeeAPI getMinSalaryEmployeeByDep(int department);
+    Employee getMinSalaryEmployeeByDep(int department);
 
-    Collection<EmployeeAPI> getAllEmployeesByDepartmentId(Integer department);
+    Collection<Employee> getAllEmployeesByDepartmentId(Integer department);
 
 }

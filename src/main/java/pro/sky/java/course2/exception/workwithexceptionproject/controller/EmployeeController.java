@@ -4,8 +4,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import pro.sky.java.course2.exception.workwithexceptionproject.Employee;
+import pro.sky.java.course2.exception.workwithexceptionproject.domain.Employee;
 import pro.sky.java.course2.exception.workwithexceptionproject.service.EmployeeService;
+
+import java.util.List;
 
 @RequestMapping("/employee")
 @RestController
@@ -35,5 +37,11 @@ public class EmployeeController {
     public Employee find(@RequestParam String firstName, @RequestParam String lastName) {
         return employeeService.findEmployee(firstName, lastName);
     }
+
+    @GetMapping("/get")
+    public List<Employee> get() {
+        return employeeService.getEmployees();
+    }
+
 }
 

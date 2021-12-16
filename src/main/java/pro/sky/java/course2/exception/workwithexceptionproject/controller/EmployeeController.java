@@ -26,8 +26,10 @@ public class EmployeeController {
     }
 
     @GetMapping("/add")
-    public Employee add(@RequestParam String firstName, @RequestParam String lastName,
-                        @RequestParam int department, @RequestParam int salary) {
+    public Employee add(@RequestParam String firstName,
+                        @RequestParam String lastName,
+                        @RequestParam int department,
+                        @RequestParam int salary) {
         if (StringUtils.isAlpha(firstName + lastName)) {
             firstName = StringUtils.capitalize(firstName);
             lastName = StringUtils.capitalize(lastName);

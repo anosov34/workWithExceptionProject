@@ -13,33 +13,33 @@ import java.util.Collection;
 @RestController
 public class EmployeeController {
     private final EmployeeService employeeService;
-
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
-
     @GetMapping
     public String answerWelcome() {
         return "Welcome to the employee book!";
     }
 
     @GetMapping("/add")
-    public Employee add(@RequestParam String firstName, @RequestParam String lastName) {
-        return employeeService.addEmployee(firstName, lastName);
+    public Employee add(@RequestParam String firstName,
+                        @RequestParam String lastName,
+                        @RequestParam int department,
+                        @RequestParam int salary) {
+        return employeeService.addEmployee(firstName, lastName, department, salary);
     }
 
     @GetMapping("/remove")
     public Employee remove(@RequestParam String firstName, @RequestParam String lastName) {
         return employeeService.removeEmployee(firstName, lastName);
     }
-
     @GetMapping("/find")
     public Employee find(@RequestParam String firstName, @RequestParam String lastName) {
         return employeeService.findEmployee(firstName, lastName);
     }
+
     @GetMapping("/get")
     public Collection<Employee> get() {
         return employeeService.getEmployees();
     }
 }
-

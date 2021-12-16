@@ -2,6 +2,7 @@ package pro.sky.java.course2.exception.workwithexceptionproject.service;
 
 import org.springframework.stereotype.Service;
 import pro.sky.java.course2.exception.workwithexceptionproject.domain.Employee;
+import pro.sky.java.course2.exception.workwithexceptionproject.exception.ArraysIsFullException;
 import pro.sky.java.course2.exception.workwithexceptionproject.exception.EmployeeIsNotFoundException;
 
 import java.util.Collection;
@@ -17,8 +18,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         this.employees = new HashMap<>();
     }
 
-    public Employee addEmployee(String firstName, String lastName) {
-        Employee employee = new Employee(firstName, lastName);
+    public Employee addEmployee(String firstName, String lastName, int department, int salary) {
+        Employee employee = new Employee(firstName, lastName, department, salary);
         employees.put(firstName + lastName, employee);
         return employee;
     }
@@ -27,20 +28,26 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (employees.containsKey(firstName + lastName)) {
             return employees.remove(firstName + lastName);
         }
-            throw new EmployeeIsNotFoundException();
+        throw new EmployeeIsNotFoundException();
     }
+
 
     public Employee findEmployee(String firstName, String lastName) {
         if (employees.containsKey(firstName + lastName)) {
             return employees.get(firstName + lastName);
         }
-            throw new EmployeeIsNotFoundException();
+        throw new EmployeeIsNotFoundException();
     }
 
-    public Collection<Employee> getEmployees() {
+    public Collection<Employee>     getEmployees() {
         return Collections.unmodifiableCollection(employees.values());
     }
+
 }
+
+
+
+
 
 
 
